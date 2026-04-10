@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ExternalLink } from "lucide-react";
+import * as THREE from "three";
+import FOG from "vanta/dist/vanta.fog.min";
 
 interface Article {
   title: string;
@@ -95,6 +98,52 @@ const LoadingSkeleton = () => (
   </div>
 );
 
+const VantaHero = () => {
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const vantaEffect = useRef<ReturnType<typeof FOG> | null>(null);
+
+  useEffect(() => {
+    if (!vantaEffect.current && vantaRef.current) {
+      vantaEffect.current = FOG({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        highlightColor: 0xf97316,
+        midtoneColor: 0x1e293b,
+        lowlightColor: 0x0f172a,
+        baseColor: 0x1a1f2e,
+        blurFactor: 0.63,
+        speed: 2.2,
+        zoom: 0.8,
+      });
+    }
+    return () => {
+      if (vantaEffect.current) {
+        vantaEffect.current.destroy();
+        vantaEffect.current = null;
+      }
+    };
+  }, []);
+
+  return (
+    <section ref={vantaRef} className="relative flex items-center justify-center py-36 lg:py-48">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+        <h1 className="text-3xl lg:text-5xl font-bold text-primary-foreground mb-4">
+          AI News & Insights
+        </h1>
+        <p className="text-sm text-primary-foreground/70 max-w-2xl mx-auto">
+          Stay up to date with the latest developments in artificial intelligence,
+          curated from leading technology publications.
+        </p>
+      </div>
+    </section>
+  );
+};
+
 const News = () => {
   const { data: articles, isLoading, error } = useQuery({
     queryKey: ["ai-news"],
@@ -112,15 +161,7 @@ const News = () => {
       <Navbar />
 
       <main className="flex-1">
-        <section className="bg-hero text-hero-foreground py-12">
-          <div className="container mx-auto px-4 lg:px-8">
-            <h1 className="text-3xl lg:text-5xl font-bold mb-3">AI News & Insights</h1>
-            <p className="text-sm text-hero-foreground/70 max-w-2xl">
-              Stay up to date with the latest developments in artificial intelligence,
-              curated from leading technology publications.
-            </p>
-          </div>
-        </section>
+        <VantaHero />
 
         <section className="bg-secondary py-16">
           <div className="container mx-auto px-4 lg:px-8">
