@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { Mail, Phone, MapPin } from "lucide-react";
+import contactHero from "@/assets/contact-hero.jpg";
 
 const contactJsonLd = {
   "@context": "https://schema.org",
@@ -33,15 +34,23 @@ const Contact = () => (
     />
     <Navbar />
     <main>
-      <section className="bg-hero text-hero-foreground py-12">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative py-24 lg:py-36">
+        <div className="absolute inset-0">
+          <img
+            src={contactHero}
+            alt="Contestor office in Tallinn"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-foreground/60" />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <nav aria-label="Breadcrumb">
-            <p className="text-sm text-hero-foreground/60 mb-4">
-              <a href="/" className="hover:text-hero-foreground">Home</a> &gt; Contact us
+            <p className="text-sm text-primary-foreground/60 mb-4">
+              <a href="/" className="hover:text-primary-foreground">Home</a> &gt; Contact us
             </p>
           </nav>
-          <h1 className="text-3xl lg:text-5xl font-bold">Contact us</h1>
-          <p className="mt-4 text-hero-foreground/80 max-w-2xl text-sm leading-relaxed">
+          <h1 className="text-3xl lg:text-5xl font-bold text-primary-foreground">Contact us</h1>
+          <p className="mt-4 text-primary-foreground/80 max-w-2xl text-sm leading-relaxed">
             Have a question or need expert advice? Get in touch with our team and we'll respond promptly.
           </p>
         </div>
