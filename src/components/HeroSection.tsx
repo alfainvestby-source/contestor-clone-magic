@@ -1,34 +1,50 @@
-import heroImg from "@/assets/hero-tax.jpg";
+import { Link } from "react-router-dom";
+import heroBg from "@/assets/hero-bg.png";
 
 const HeroSection = () => (
-  <section className="relative bg-secondary">
-    <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
-      <div className="text-sm text-muted-foreground mb-4">
-        <span>Tax Services</span> &gt; <span>Estonia</span> &gt; <span>Tax Services</span>
-      </div>
-      <h1 className="text-3xl lg:text-5xl font-bold text-foreground mb-6 max-w-2xl">
-        Tax Services
-      </h1>
-      <div className="grid lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            Contestor is a advisory firms in Estonia, providing expert tax consulting services to businesses of all sizes. Our team combines deep technical knowledge with practical industry experience to deliver tailored tax solutions that help clients manage risk, ensure compliance, and optimize their tax position.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Our integrated approach enables us to provide comprehensive, cross-border tax advice while maintaining the highest standards of quality and professional ethics.
-          </p>
-        </div>
-        <div className="relative rounded overflow-hidden shadow-lg">
-          <img
-            src={heroImg}
-            alt="Contestor tax advisors working together"
-            width={1280}
-            height={720}
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute top-4 right-4 bg-primary w-12 h-12 rounded flex items-center justify-center">
-            <span className="text-primary-foreground text-lg">▶</span>
-          </div>
+  <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+    {/* Background image */}
+    <div className="absolute inset-0">
+      <img
+        src={heroBg}
+        alt=""
+        className="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+    </div>
+
+    <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="max-w-2xl">
+        {/* Tag */}
+        <span className="inline-block border border-border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-6">
+          Elevate Your Business
+        </span>
+
+        {/* Heading */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight mb-6">
+          Help your Business Grow Quickly.
+        </h1>
+
+        {/* Subtext */}
+        <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
+          We provide expert tax advisory, accounting, and AI consulting services for businesses across Estonia and the Baltics.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center rounded-full bg-foreground text-background px-7 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
+          >
+            Book a Discovery Call
+          </Link>
+          <button className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <span className="w-10 h-10 rounded-full border border-border flex items-center justify-center">
+              <span className="text-lg">▶</span>
+            </span>
+            Watch the Video
+          </button>
         </div>
       </div>
     </div>
