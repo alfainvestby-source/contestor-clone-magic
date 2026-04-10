@@ -11,7 +11,7 @@ const HeroSection = () => (
         className="w-full h-full object-cover"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+      
     </div>
 
     <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -22,12 +22,12 @@ const HeroSection = () => (
         </span>
 
         {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
           Help your Business Grow Quickly.
         </h1>
 
         {/* Subtext */}
-        <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
+        <p className="text-lg text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
           We provide expert tax advisory, accounting, and AI consulting services for businesses across Estonia and the Baltics.
         </p>
 
