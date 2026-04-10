@@ -51,12 +51,18 @@ function stripHtml(html: string): string {
 
 async function fetchFeed(source: { name: string; url: string }): Promise<Article[]> {
   try {
+    console.log(`Fetching ${source.name}: ${source.url}`);
     const res = await fetch(source.url, {
-      headers: { "User-Agent": "Contestor-News-Bot/1.0" },
-      signal: AbortSignal.timeout(8000),
+      headers: { 
+        "User-Agent": "Mozilla/5.0 (compatible; ContestorBot/1.0)",
+        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+      },
+      signal: AbortSignal.timeout(10000),
     });
+    console.log(`${source.name} status: ${res.status}`);
     if (!res.ok) return [];
     const xml = await res.text();
+    console.log(`${source.name} xml length: ${xml.length}`);
     const doc = new DOMParser().parseFromString(xml, "text/xml");
     if (!doc) return [];
 
