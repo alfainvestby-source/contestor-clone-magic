@@ -7,7 +7,7 @@ const services = [
     tags: ["Tax", "Compliance", "Strategy"],
     description:
       "Expert tax consulting to help businesses manage risk, ensure compliance, and optimize their tax position across Estonia and the Baltics.",
-    href: "/#services",
+    href: "/tax-services",
     featured: false,
   },
   {

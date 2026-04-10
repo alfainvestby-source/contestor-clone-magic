@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const navItems = [
-  { label: "Tax Services", href: "/#services" },
+  { label: "Tax Services", href: "/tax-services" },
   { label: "Accounting", href: "/accounting-services" },
   { label: "AI Consulting", href: "/ai-consulting" },
   { label: "AI News", href: "/news" },
