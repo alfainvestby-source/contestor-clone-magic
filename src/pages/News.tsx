@@ -115,15 +115,7 @@ const News = () => {
       <Navbar />
 
       <main className="flex-1">
-        <section className="bg-hero text-hero-foreground py-12">
-          <div className="container mx-auto px-4 lg:px-8">
-            <h1 className="text-3xl lg:text-5xl font-bold mb-3">AI News & Insights</h1>
-            <p className="text-sm text-hero-foreground/70 max-w-2xl">
-              Stay up to date with the latest developments in artificial intelligence,
-              curated from leading technology publications.
-            </p>
-          </div>
-        </section>
+        <VantaHero />
 
         <section className="bg-secondary py-16">
           <div className="container mx-auto px-4 lg:px-8">
