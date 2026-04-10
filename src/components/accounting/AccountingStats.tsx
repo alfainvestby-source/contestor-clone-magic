@@ -7,7 +7,7 @@ const stats = [
   },
   {
     icon: <Award className="w-10 h-10 text-primary" />,
-    title: "30+ years of experience in local and international accounting",
+    title: "20+ years of experience in local and international accounting",
   },
   {
     icon: <Calculator className="w-10 h-10 text-primary" />,
