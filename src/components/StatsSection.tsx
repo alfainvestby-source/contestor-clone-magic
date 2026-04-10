@@ -5,10 +5,6 @@ const stats = [
     icon: <Award className="w-8 h-8 text-primary" />,
     title: "20+ years of providing tax advice in Estonia",
   },
-  {
-    icon: <Users className="w-8 h-8 text-primary" />,
-    title: "Over 70 tax specialists across the Baltics",
-  },
 ];
 
 const StatsSection = () => (
