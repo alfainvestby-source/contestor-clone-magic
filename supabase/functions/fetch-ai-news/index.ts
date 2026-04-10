@@ -20,76 +20,90 @@ interface Article {
   image?: string;
 }
 
-function extractText(el: Element | null): string {
-  if (!el) return "";
-  return el.textContent?.trim() ?? "";
+function stripCdata(s: string): string {
+  return s.replace(/^<!\[CDATA\[/, "").replace(/\]\]>$/, "").trim();
 }
 
-function extractImage(item: Element): string | undefined {
-  // Try media:content, media:thumbnail, enclosure, or img in description
-  const media = item.getElementsByTagName("media:content")[0] ??
-    item.getElementsByTagName("media:thumbnail")[0];
-  if (media) {
-    const url = media.getAttribute("url");
-    if (url) return url;
-  }
-  const enclosure = item.getElementsByTagName("enclosure")[0];
-  if (enclosure?.getAttribute("type")?.startsWith("image/")) {
-    return enclosure.getAttribute("url") ?? undefined;
-  }
-  // Try to find image in content:encoded or description
-  const content = extractText(item.getElementsByTagName("content:encoded")[0]) ||
-    extractText(item.getElementsByTagName("description")[0]);
-  const imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/);
+function getTagContent(xml: string, tag: string): string {
+  // Match <tag>...</tag> or <tag><![CDATA[...]]></tag>
+  const re = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i");
+  const m = xml.match(re);
+  if (!m) return "";
+  return stripCdata(m[1].trim());
+}
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&").replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#039;/g, "'")
+    .replace(/&[^;]+;/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function extractImage(itemXml: string): string | undefined {
+  // media:content or media:thumbnail
+  const mediaMatch = itemXml.match(/<media:(?:content|thumbnail)[^>]+url=["']([^"']+)["']/i);
+  if (mediaMatch) return mediaMatch[1];
+  // enclosure with image type
+  const encMatch = itemXml.match(/<enclosure[^>]+type=["']image\/[^"']+["'][^>]+url=["']([^"']+)["']/i);
+  if (encMatch) return encMatch[1];
+  const encMatch2 = itemXml.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image/i);
+  if (encMatch2) return encMatch2[1];
+  // img in content
+  const content = getTagContent(itemXml, "content:encoded") || getTagContent(itemXml, "description");
+  const imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/i);
   if (imgMatch) return imgMatch[1];
   return undefined;
 }
 
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, "").replace(/&[^;]+;/g, " ").replace(/\s+/g, " ").trim();
+function parseItems(xml: string): string[] {
+  const items: string[] = [];
+  const re = /<item[\s>]([\s\S]*?)<\/item>/gi;
+  let m;
+  while ((m = re.exec(xml)) !== null) items.push(m[0]);
+  if (items.length === 0) {
+    // Try Atom <entry>
+    const re2 = /<entry[\s>]([\s\S]*?)<\/entry>/gi;
+    while ((m = re2.exec(xml)) !== null) items.push(m[0]);
+  }
+  return items;
+}
+
+function getLinkFromEntry(itemXml: string): string {
+  // RSS <link>
+  const linkContent = getTagContent(itemXml, "link");
+  if (linkContent && linkContent.startsWith("http")) return linkContent;
+  // Atom <link href="..."/>
+  const hrefMatch = itemXml.match(/<link[^>]+href=["']([^"']+)["']/i);
+  if (hrefMatch) return hrefMatch[1];
+  return linkContent;
 }
 
 async function fetchFeed(source: { name: string; url: string }): Promise<Article[]> {
   try {
-    console.log(`Fetching ${source.name}: ${source.url}`);
     const res = await fetch(source.url, {
-      headers: { 
+      headers: {
         "User-Agent": "Mozilla/5.0 (compatible; ContestorBot/1.0)",
         "Accept": "application/rss+xml, application/xml, text/xml, */*",
       },
       signal: AbortSignal.timeout(10000),
     });
-    console.log(`${source.name} status: ${res.status}`);
     if (!res.ok) return [];
     const xml = await res.text();
-    console.log(`${source.name} xml length: ${xml.length}`);
-    const doc = new DOMParser().parseFromString(xml, "text/xml");
-    if (!doc) return [];
+    const items = parseItems(xml).slice(0, 10);
 
-    const items = doc.getElementsByTagName("item");
-    const entries = doc.getElementsByTagName("entry"); // Atom feeds
-    const nodes = items.length > 0 ? items : entries;
-
-    const articles: Article[] = [];
-    for (let i = 0; i < Math.min(nodes.length, 10); i++) {
-      const item = nodes[i];
-      const title = extractText(item.getElementsByTagName("title")[0]);
-      const link = extractText(item.getElementsByTagName("link")[0]) ||
-        item.getElementsByTagName("link")[0]?.getAttribute("href") || "";
-      const pubDate = extractText(item.getElementsByTagName("pubDate")[0]) ||
-        extractText(item.getElementsByTagName("published")[0]) ||
-        extractText(item.getElementsByTagName("updated")[0]) || "";
-      const descRaw = extractText(item.getElementsByTagName("description")[0]) ||
-        extractText(item.getElementsByTagName("summary")[0]) || "";
+    return items.map((itemXml) => {
+      const title = stripHtml(getTagContent(itemXml, "title"));
+      const link = getLinkFromEntry(itemXml);
+      const pubDate = getTagContent(itemXml, "pubDate") ||
+        getTagContent(itemXml, "published") ||
+        getTagContent(itemXml, "updated") || "";
+      const descRaw = getTagContent(itemXml, "description") ||
+        getTagContent(itemXml, "summary") || "";
       const description = stripHtml(descRaw).slice(0, 300);
-      const image = extractImage(item);
-
-      if (title && link) {
-        articles.push({ title, link, source: source.name, pubDate, description, image });
-      }
-    }
-    return articles;
-  } catch {
+      const image = extractImage(itemXml);
+      return { title, link, source: source.name, pubDate, description, image };
+    }).filter((a) => a.title && a.link);
+  } catch (err) {
+    console.error(`Error fetching ${source.name}:`, err);
     return [];
   }
 }
@@ -105,20 +119,16 @@ Deno.serve(async (req) => {
       .filter((r): r is PromiseFulfilledResult<Article[]> => r.status === "fulfilled")
       .flatMap((r) => r.value);
 
-    // Sort by date descending
     articles.sort((a, b) => {
       const da = new Date(a.pubDate).getTime() || 0;
       const db = new Date(b.pubDate).getTime() || 0;
       return db - da;
     });
 
-    const limited = articles.slice(0, 30);
-
-    return new Response(JSON.stringify(limited), {
+    return new Response(JSON.stringify(articles.slice(0, 30)), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
-      status: 200,
     });
-  } catch (err) {
+  } catch {
     return new Response(JSON.stringify({ error: "Failed to fetch news" }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
