@@ -20,16 +20,6 @@ const footerColumns = [
 const Footer = () => (
   <footer className="bg-hero text-hero-foreground">
     <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="flex items-center gap-2 mb-8">
-        <span className="text-sm text-hero-foreground/70">Follow us</span>
-        <div className="flex gap-3">
-          {["LinkedIn", "X", "YouTube"].map((s) => (
-            <a key={s} href="#" className="text-xs text-hero-foreground/60 hover:text-hero-foreground transition-colors">
-              {s}
-            </a>
-          ))}
-        </div>
-      </div>
 
       <div className="border-t border-hero-foreground/10 pt-8">
         <p className="text-xs text-hero-foreground/50 mb-6">
