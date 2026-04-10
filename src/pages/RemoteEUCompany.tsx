@@ -155,12 +155,12 @@ const RemoteEUCompany = () => (
             Secure your company's mandatory presence in the Estonian Business Register with transparent, professional support.
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
-            <Link
-              to="/contact"
+            <a
+              href="#packages"
               className="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-7 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
             >
               Choose Your Package
-            </Link>
+            </a>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 text-primary-foreground px-7 py-3 text-sm font-semibold hover:bg-primary-foreground/10 transition-colors"
