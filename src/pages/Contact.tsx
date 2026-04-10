@@ -37,8 +37,8 @@ const Contact = () => (
               <Phone className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">Phone</p>
-                <a href="tel:+3725551234" className="text-sm text-primary hover:underline">
-                  +372 555 1234
+                <a href="tel:++3725072600" className="text-sm text-primary hover:underline">
+                  +372 50 72600
                 </a>
               </div>
             </div>
@@ -46,7 +46,7 @@ const Contact = () => (
               <MapPin className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">Office</p>
-                <p className="text-sm text-muted-foreground">Tallinn, Estonia</p>
+                <p className="text-sm text-muted-foreground">Tatari 1, Tallinn<br />Estonia, 10116</p>
               </div>
             </div>
           </div>
