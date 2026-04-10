@@ -1,5 +1,3 @@
-import heroImg from "@/assets/hero-tax.jpg";
-
 const HeroSection = () => (
   <section className="relative bg-secondary">
     <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
@@ -20,10 +18,10 @@ const HeroSection = () => (
         </div>
         <div className="relative rounded overflow-hidden shadow-lg">
           <img
-            src={heroImg}
+            src="https://www.pwc.com/ee/en/services/assets/Group-34_banner_1600x900.png"
             alt="Contestor tax advisors working together"
-            width={1280}
-            height={720}
+            width={1600}
+            height={900}
             className="w-full h-auto object-cover"
           />
           <div className="absolute top-4 right-4 bg-primary w-12 h-12 rounded flex items-center justify-center">

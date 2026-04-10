@@ -4,26 +4,18 @@ import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "Tax Services", href: "/#services" },
-  { label: "Accounting", href: "/accounting-services" },
-  { label: "AI Consulting", href: "/ai-consulting" },
+  { label: "Accounting", href: "/#accounting" },
+  { label: "AI Consulting", href: "/#ai-consulting" },
   { label: "AI News", href: "/news" },
 ];
 
 const NavLink = ({ item, onClick }: { item: typeof navItems[0]; onClick?: () => void }) => {
-  const isInternal = item.href.startsWith("/");
   const className = "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors";
 
-  if (isInternal) {
-    return (
-      <Link to={item.href} className={className} onClick={onClick}>
-        {item.label}
-      </Link>
-    );
-  }
   return (
-    <a href={item.href} className={className} onClick={onClick}>
+    <Link to={item.href} className={className} onClick={onClick}>
       {item.label}
-    </a>
+    </Link>
   );
 };
 
@@ -44,10 +36,9 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <Link to="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/#contact-section" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Contact us
           </Link>
-          
         </div>
 
         <button
@@ -66,7 +57,7 @@ const Navbar = () => {
               <NavLink item={item} onClick={() => setMobileOpen(false)} />
             </div>
           ))}
-          <Link to="/contact" className="block text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link to="/#contact-section" className="block text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setMobileOpen(false)}>
             Contact us
           </Link>
         </div>
