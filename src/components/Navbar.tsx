@@ -6,6 +6,7 @@ const navItems = [
   { label: "Industries", href: "#" },
   { label: "Services", href: "#services" },
   { label: "Accounting", href: "/accounting-services" },
+  { label: "AI Consulting", href: "/ai-consulting" },
   { label: "About Us", href: "#" },
   { label: "Careers", href: "#" },
 ];
