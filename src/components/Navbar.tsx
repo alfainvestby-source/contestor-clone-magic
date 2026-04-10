@@ -3,12 +3,9 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const navItems = [
-  { label: "Industries", href: "#" },
-  { label: "Services", href: "#services" },
+  { label: "Tax Services", href: "#services" },
   { label: "Accounting", href: "/accounting-services" },
   { label: "AI Consulting", href: "/ai-consulting" },
-  { label: "About Us", href: "#" },
-  { label: "Careers", href: "#" },
 ];
 
 const NavLink = ({ item, onClick }: { item: typeof navItems[0]; onClick?: () => void }) => {
@@ -49,7 +46,7 @@ const Navbar = () => {
           <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Contact us
           </a>
-          <span className="text-sm text-muted-foreground">🌐 EN</span>
+          
         </div>
 
         <button
