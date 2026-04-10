@@ -5,7 +5,7 @@ import AIStats from "@/components/ai/AIStats";
 import AIIntro from "@/components/ai/AIIntro";
 import AIServicesCards from "@/components/ai/AIServicesCards";
 import AIApproach from "@/components/ai/AIApproach";
-import AICta from "@/components/ai/AICta";
+
 import AIContact from "@/components/ai/AIContact";
 
 const AIConsulting = () => (
@@ -16,7 +16,7 @@ const AIConsulting = () => (
     <AIIntro />
     <AIServicesCards />
     <AIApproach />
-    <AICta />
+    
     <AIContact />
     <Footer />
   </div>
