@@ -1,4 +1,5 @@
 import ctaImg from "@/assets/cta-banner.jpg";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const CtaBanner = () => (
@@ -15,9 +16,11 @@ const CtaBanner = () => (
       <h2 className="text-2xl lg:text-4xl font-bold text-hero-foreground mb-4 max-w-lg leading-tight">
         so you can outthink, outpace and outperform
       </h2>
-      <Button variant="hero" className="w-fit">
-        Find out more →
-      </Button>
+      <Link to="/contact">
+        <Button variant="hero" className="w-fit">
+          Find out more →
+        </Button>
+      </Link>
     </div>
   </section>
 );
