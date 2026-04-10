@@ -144,7 +144,7 @@ const VantaHero = () => {
   );
 };
 
-
+const News = () => {
   const { data: articles, isLoading, error } = useQuery({
     queryKey: ["ai-news"],
     queryFn: fetchNews,
