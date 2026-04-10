@@ -6,7 +6,7 @@ import ServicesGrid from "@/components/ServicesGrid";
 import TaxServicesDetail from "@/components/TaxServicesDetail";
 import NewsCards from "@/components/NewsCards";
 import RegionalInfo from "@/components/RegionalInfo";
-import ContactSection from "@/components/ContactSection";
+
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
@@ -20,7 +20,7 @@ const Index = () => (
     <TaxServicesDetail />
     <NewsCards />
     <RegionalInfo />
-    <ContactSection />
+    
     <CtaBanner />
     <Footer />
   </div>
