@@ -1,20 +1,17 @@
 import { Link } from "react-router-dom";
 import { useLayoutEffect, useRef } from "react";
 import * as THREE from "three";
-import DOTS from "vanta/dist/vanta.dots.min";
+import NET from "vanta/dist/vanta.net.min";
 
 const AIHero = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
-  const vantaEffect = useRef<ReturnType<typeof DOTS> | null>(null);
+  const vantaEffect = useRef<ReturnType<typeof NET> | null>(null);
 
   useLayoutEffect(() => {
     const target = backgroundRef.current;
+    if (!target || vantaEffect.current) return;
 
-    if (!target || vantaEffect.current) {
-      return;
-    }
-
-    const effect = DOTS({
+    const effect = NET({
       el: target,
       THREE,
       mouseControls: true,
@@ -24,27 +21,22 @@ const AIHero = () => {
       minWidth: 200.0,
       scale: 1.0,
       scaleMobile: 1.0,
-      color: 0xf97316,
-      color2: 0x1e293b,
+      color: 0xff7a00,
       backgroundColor: 0x1a1f2e,
+      points: 18.0,
+      maxDistance: 25.0,
+      spacing: 17.0,
     });
 
     vantaEffect.current = effect;
 
     return () => {
-      if (!vantaEffect.current) {
-        return;
-      }
-
+      if (!vantaEffect.current) return;
       try {
         vantaEffect.current.destroy();
       } catch {
         const canvas = vantaEffect.current.renderer?.domElement;
-
-        if (canvas?.parentNode) {
-          canvas.parentNode.removeChild(canvas);
-        }
-
+        if (canvas?.parentNode) canvas.parentNode.removeChild(canvas);
         vantaEffect.current.renderer = null;
         vantaEffect.current.scene = null;
       } finally {
@@ -56,7 +48,6 @@ const AIHero = () => {
   return (
     <section className="relative isolate w-full min-h-[400px] overflow-hidden py-24 lg:py-36">
       <div ref={backgroundRef} className="absolute inset-0 -z-10" aria-hidden="true" />
-      <div className="absolute inset-0 -z-10 bg-foreground/10" aria-hidden="true" />
 
       <div className="container relative z-10 mx-auto px-4 lg:px-8">
         <div className="mb-4 text-sm text-primary-foreground/60">
