@@ -12,7 +12,7 @@ const HeroSection = () => (
       <div className="grid lg:grid-cols-2 gap-10 items-start">
         <div>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Contestor is among the top tax advisory firms in Estonia, providing expert tax consulting services to businesses of all sizes. Our team combines deep technical knowledge with practical industry experience to deliver tailored tax solutions that help clients manage risk, ensure compliance, and optimize their tax position.
+            Contestor is a advisory firms in Estonia, providing expert tax consulting services to businesses of all sizes. Our team combines deep technical knowledge with practical industry experience to deliver tailored tax solutions that help clients manage risk, ensure compliance, and optimize their tax position.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Our integrated approach enables us to provide comprehensive, cross-border tax advice while maintaining the highest standards of quality and professional ethics.
