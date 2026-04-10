@@ -17,7 +17,7 @@ const HeroSection = () => (
     <div className="container mx-auto px-4 lg:px-8 relative z-10">
       <div className="max-w-2xl">
         {/* Tag */}
-        <span className="inline-block border border-border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-6">
+        <span className="inline-block border border-primary rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-primary mb-6">
           Elevate Your Business
         </span>
 
