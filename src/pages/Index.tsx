@@ -43,6 +43,7 @@ const Index = () => (
     <Navbar />
     <main>
       <HeroSection />
+      <ServicesShowcase />
     </main>
     <Footer />
   </div>
