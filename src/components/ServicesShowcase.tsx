@@ -26,6 +26,14 @@ const services = [
     href: "/ai-consulting",
     featured: false,
   },
+  {
+    title: "Remote EU Company",
+    tags: ["e-Residency", "Company Formation", "Estonia"],
+    description:
+      "Start and manage your EU company remotely from Estonia. Legal address, contact person, and full company formation services for e-Residents.",
+    href: "/remote-eu-company",
+    featured: false,
+  },
 ];
 
 const ServicesShowcase = () => (
