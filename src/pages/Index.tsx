@@ -1,10 +1,5 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import StatsSection from "@/components/StatsSection";
-import ContactBanner from "@/components/ContactBanner";
-import ServicesGrid from "@/components/ServicesGrid";
-import TaxServicesDetail from "@/components/TaxServicesDetail";
-import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -47,11 +42,6 @@ const Index = () => (
     <Navbar />
     <main>
       <HeroSection />
-      <TaxServicesDetail />
-      <StatsSection />
-      <ContactBanner />
-      <ServicesGrid />
-      <CtaBanner />
     </main>
     <Footer />
   </div>
