@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
+import VantaHero from "@/components/VantaHero";
 import StatsSection from "@/components/StatsSection";
 import ContactBanner from "@/components/ContactBanner";
 import ServicesGrid from "@/components/ServicesGrid";
@@ -65,7 +65,7 @@ const Index = () => (
     <Navbar />
     <main>
       {/* Hero */}
-      <HeroSection />
+      <VantaHero />
 
       {/* Tax Services */}
       <TaxServicesDetail />
