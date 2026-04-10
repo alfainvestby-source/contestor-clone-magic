@@ -6,6 +6,7 @@ const navItems = [
   { label: "Tax Services", href: "#services" },
   { label: "Accounting", href: "/accounting-services" },
   { label: "AI Consulting", href: "/ai-consulting" },
+  { label: "AI News", href: "/news" },
 ];
 
 const NavLink = ({ item, onClick }: { item: typeof navItems[0]; onClick?: () => void }) => {
