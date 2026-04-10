@@ -51,11 +51,6 @@ const Contact = () => (
             </div>
           </div>
 
-          <div className="bg-secondary rounded-lg p-5">
-            <h3 className="text-lg font-semibold text-foreground mb-2">Office hours</h3>
-            <p className="text-sm text-muted-foreground">Monday – Friday: 9:00 – 18:00</p>
-            <p className="text-sm text-muted-foreground">Saturday – Sunday: Closed</p>
-          </div>
         </div>
       </section>
     </main>
