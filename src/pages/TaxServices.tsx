@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TaxServicesDetail from "@/components/TaxServicesDetail";
+import heroAbstract from "@/assets/hero-abstract.png";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 
