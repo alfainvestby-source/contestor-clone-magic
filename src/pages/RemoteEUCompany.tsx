@@ -219,7 +219,7 @@ const RemoteEUCompany = () => (
       </section>
 
       {/* Pricing Packages */}
-      <section className="py-16 lg:py-24 bg-background">
+      <section id="packages" className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <p className="text-sm font-semibold text-primary text-center mb-2 uppercase tracking-widest">Flexible Pricing</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-4">
