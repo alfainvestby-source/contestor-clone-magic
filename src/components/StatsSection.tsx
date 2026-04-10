@@ -3,7 +3,7 @@ import { Award, Users } from "lucide-react";
 const stats = [
   {
     icon: <Award className="w-8 h-8 text-primary" />,
-    title: "25+ years of providing tax advice in Estonia",
+    title: "20+ years of providing tax advice in Estonia",
   },
   {
     icon: <Users className="w-8 h-8 text-primary" />,
