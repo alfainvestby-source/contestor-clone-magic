@@ -43,9 +43,9 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Contact us
-          </a>
+          </Link>
           
         </div>
 
@@ -65,9 +65,9 @@ const Navbar = () => {
               <NavLink item={item} onClick={() => setMobileOpen(false)} />
             </div>
           ))}
-          <a href="#contact" className="block text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link to="/contact" className="block text-sm font-medium text-muted-foreground hover:text-foreground">
             Contact us
-          </a>
+          </Link>
         </div>
       )}
     </header>
