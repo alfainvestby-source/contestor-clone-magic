@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "Industries", href: "#" },
   { label: "Services", href: "#services" },
+  { label: "Accounting", href: "/accounting-services" },
   { label: "About Us", href: "#" },
   { label: "Careers", href: "#" },
-  { label: "More", href: "#", hasDropdown: true },
 ];
 
 const Navbar = () => {
