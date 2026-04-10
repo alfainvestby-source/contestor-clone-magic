@@ -1,13 +1,32 @@
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "Industries", href: "#" },
   { label: "Services", href: "#services" },
+  { label: "Accounting", href: "/accounting-services" },
   { label: "About Us", href: "#" },
   { label: "Careers", href: "#" },
-  { label: "More", href: "#", hasDropdown: true },
 ];
+
+const NavLink = ({ item, onClick }: { item: typeof navItems[0]; onClick?: () => void }) => {
+  const isInternal = item.href.startsWith("/");
+  const className = "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors";
+
+  if (isInternal) {
+    return (
+      <Link to={item.href} className={className} onClick={onClick}>
+        {item.label}
+      </Link>
+    );
+  }
+  return (
+    <a href={item.href} className={className} onClick={onClick}>
+      {item.label}
+    </a>
+  );
+};
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,20 +34,13 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
-        <a href="/" className="text-2xl font-extrabold tracking-tight text-foreground">
+        <Link to="/" className="text-2xl font-extrabold tracking-tight text-foreground">
           contestor
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
-            >
-              {item.label}
-              {item.hasDropdown && <ChevronDown className="w-3.5 h-3.5" />}
-            </a>
+            <NavLink key={item.label} item={item} />
           ))}
         </nav>
 
@@ -51,14 +63,9 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="lg:hidden border-t border-border bg-background px-4 py-4 space-y-3">
           {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="block text-sm font-medium text-muted-foreground hover:text-foreground"
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.label}
-            </a>
+            <div key={item.label} className="block">
+              <NavLink item={item} onClick={() => setMobileOpen(false)} />
+            </div>
           ))}
           <a href="#contact" className="block text-sm font-medium text-muted-foreground hover:text-foreground">
             Contact us
