@@ -6,6 +6,7 @@ const navItems = [
   { label: "Tax Services", href: "/tax-services" },
   { label: "Accounting", href: "/accounting-services" },
   { label: "AI Consulting", href: "/ai-consulting" },
+  { label: "Remote EU Company", href: "/remote-eu-company" },
   { label: "AI News", href: "/news" },
 ];
 

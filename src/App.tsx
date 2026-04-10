@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound.tsx";
 import TaxServices from "./pages/TaxServices.tsx";
 import Contact from "./pages/Contact.tsx";
 import News from "./pages/News.tsx";
+import RemoteEUCompany from "./pages/RemoteEUCompany.tsx";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/ai-consulting" element={<AIConsulting />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/news" element={<News />} />
+            <Route path="/remote-eu-company" element={<RemoteEUCompany />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
