@@ -155,12 +155,12 @@ const RemoteEUCompany = () => (
             Secure your company's mandatory presence in the Estonian Business Register with transparent, professional support.
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
-            <Link
-              to="/contact"
+            <a
+              href="#packages"
               className="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-7 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
             >
               Choose Your Package
-            </Link>
+            </a>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 text-primary-foreground px-7 py-3 text-sm font-semibold hover:bg-primary-foreground/10 transition-colors"
@@ -219,7 +219,7 @@ const RemoteEUCompany = () => (
       </section>
 
       {/* Pricing Packages */}
-      <section className="py-16 lg:py-24 bg-background">
+      <section id="packages" className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <p className="text-sm font-semibold text-primary text-center mb-2 uppercase tracking-widest">Flexible Pricing</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-4">
