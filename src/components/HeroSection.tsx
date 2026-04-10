@@ -28,7 +28,7 @@ const HeroSection = () => (
 
         {/* Subtext */}
         <p className="text-lg text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
-          We provide expert tax advisory, accounting, and AI consulting services for businesses across Estonia and the Baltics.
+          We provide expert tax advisory, accounting, and AI consulting services for businesses across EU and the Baltics.
         </p>
 
         {/* CTAs */}
