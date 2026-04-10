@@ -27,17 +27,21 @@ const TaxServices = () => (
     <Navbar />
     <main>
       {/* Hero */}
-      <section className="bg-secondary py-12 lg:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-sm text-muted-foreground mb-4">
-            <Link to="/" className="hover:text-foreground">Home</Link>
+      <section className="relative py-12 lg:py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroAbstract} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/60" />
+        </div>
+        <div className="container relative z-10 mx-auto px-4 lg:px-8">
+          <div className="text-sm text-primary-foreground/60 mb-4">
+            <Link to="/" className="hover:text-primary-foreground">Home</Link>
             {" > "}
             <span>Tax Services</span>
           </div>
-          <h1 className="text-3xl lg:text-5xl font-bold text-foreground mb-6 max-w-2xl">
+          <h1 className="text-3xl lg:text-5xl font-bold text-primary-foreground mb-6 max-w-2xl">
             Tax Advisory Services
           </h1>
-          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+          <p className="text-primary-foreground/80 leading-relaxed max-w-2xl">
             Contestor is one of the leading advisory firms in Estonia, providing expert tax consulting services to businesses of all sizes. Our team combines deep technical knowledge with practical industry experience to deliver tailored tax solutions.
           </p>
         </div>
