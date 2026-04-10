@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ServicesShowcase from "@/components/ServicesShowcase";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -42,6 +43,7 @@ const Index = () => (
     <Navbar />
     <main>
       <HeroSection />
+      <ServicesShowcase />
     </main>
     <Footer />
   </div>
