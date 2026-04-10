@@ -9,7 +9,7 @@ const footerLinks = [
 ];
 
 const Footer = () => (
-  <footer className="bg-hero text-hero-foreground">
+  <footer className="bg-hero text-hero-foreground" role="contentinfo">
     <div className="container mx-auto px-4 lg:px-8 py-12">
       <div className="flex flex-wrap gap-6">
         {footerLinks.map((link) => (
