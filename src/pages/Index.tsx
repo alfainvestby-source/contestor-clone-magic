@@ -47,10 +47,10 @@ const Index = () => (
     <Navbar />
     <main>
       <HeroSection />
+      <TaxServicesDetail />
       <StatsSection />
       <ContactBanner />
       <ServicesGrid />
-      <TaxServicesDetail />
       <CtaBanner />
     </main>
     <Footer />
