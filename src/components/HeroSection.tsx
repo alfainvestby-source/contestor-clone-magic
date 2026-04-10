@@ -39,12 +39,12 @@ const HeroSection = () => (
           >
             Book a Discovery Call
           </Link>
-          <button className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            <span className="w-10 h-10 rounded-full border border-border flex items-center justify-center">
-              <span className="text-lg">▶</span>
-            </span>
-            Watch the Video
-          </button>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+          >
+            Contact Us →
+          </Link>
         </div>
       </div>
     </div>
