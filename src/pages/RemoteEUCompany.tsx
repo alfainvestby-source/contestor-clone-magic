@@ -117,11 +117,50 @@ const faqs = [
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Remote EU Company Formation",
-  provider: { "@type": "Organization", name: "Contestor" },
-  description: "Start and manage your EU company remotely from Estonia. Legal address, contact person, and company formation services.",
-  areaServed: { "@type": "Country", name: "Estonia" },
-  serviceType: "Company Formation",
+  name: "Remote EU Company Formation in Estonia",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Contestor",
+    url: "https://contestor-clone-magic.lovable.app",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Tatari 1",
+      addressLocality: "Tallinn",
+      postalCode: "10116",
+      addressCountry: "EE",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 59.437,
+      longitude: 24.7536,
+    },
+    telephone: "+372 50 72600",
+    email: "contestor@contestor.ee",
+  },
+  description: "Start and manage your EU company remotely from Estonia. Legal address, contact person, company formation, and accounting services for e-Residents.",
+  areaServed: [
+    { "@type": "Country", name: "Estonia" },
+    { "@type": "Place", name: "European Union" },
+  ],
+  serviceType: ["Company Formation", "Legal Address", "Contact Person", "Virtual Office"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Company Services Packages",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Annual Legal Address & Contact Person" },
+        price: "124.00",
+        priceCurrency: "EUR",
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "5-Year Loyalty Package" },
+        price: "545.00",
+        priceCurrency: "EUR",
+      },
+    ],
+  },
 };
 
 const RemoteEUCompany = () => (
