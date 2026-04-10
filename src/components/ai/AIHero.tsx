@@ -4,7 +4,7 @@ const AIHero = () => (
   <section className="bg-hero text-hero-foreground">
     <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
       <div className="text-sm text-hero-foreground/60 mb-4">
-        <Link to="/" className="hover:text-hero-foreground transition-colors">Services</Link>
+        <Link to="/" className="hover:text-hero-foreground transition-colors">Home</Link>
         {" > "}
         <span>AI Consulting</span>
       </div>
