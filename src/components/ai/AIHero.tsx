@@ -33,7 +33,7 @@ const AIHero = () => {
   }, []);
 
   return (
-    <section ref={vantaRef} className="relative py-24 lg:py-36">
+    <section ref={vantaRef} className="relative w-full min-h-[400px] py-24 lg:py-36">
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="text-sm text-primary-foreground/60 mb-4">
           <Link to="/" className="hover:text-primary-foreground transition-colors">Home</Link>
