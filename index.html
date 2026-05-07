@@ -56,18 +56,39 @@
   </script>
 
   <script>
-    // Prevent indexing of Lovable preview/staging hosts so only www.contestor.ee
-    // appears in Google. Production custom domain is unaffected.
+    // Lovable hosting cannot issue real HTTP 301s, so we approximate it:
+    // - Published lovable.app host (contestor-clone-magic.lovable.app) → hard redirect
+    //   to the canonical custom domain so Google drops the preview URL from its index.
+    // - Editor previews (id-preview--*.lovable.app, *.lovable.dev) stay put but get
+    //   noindex so they never enter the index in the first place.
     (function () {
       try {
         var h = window.location.hostname;
-        if (h.endsWith('lovable.app') || h.endsWith('lovable.dev')) {
+        var isEditorPreview =
+          h.indexOf('id-preview--') === 0 ||
+          h.endsWith('.lovable.dev') ||
+          h === 'localhost' ||
+          h === '127.0.0.1';
+        var isLovableHost = h.endsWith('lovable.app') || h.endsWith('lovable.dev');
+
+        if (isLovableHost) {
           var m = document.createElement('meta');
           m.name = 'robots';
           m.content = 'noindex,nofollow';
           document.head.appendChild(m);
           var c = document.querySelector('link[rel="canonical"]');
           if (c) c.setAttribute('href', 'https://www.contestor.ee' + window.location.pathname);
+        }
+
+        // Hard redirect the published preview host to the canonical domain.
+        // Skip editor previews so the in-app preview keeps working.
+        if (isLovableHost && !isEditorPreview) {
+          var target =
+            'https://www.contestor.ee' +
+            window.location.pathname +
+            window.location.search +
+            window.location.hash;
+          window.location.replace(target);
         }
       } catch (e) {}
     })();
