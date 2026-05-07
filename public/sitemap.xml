@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/</loc>
+    <loc>https://www.contestor.ee/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/tax-services</loc>
+    <loc>https://www.contestor.ee/tax-services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/accounting-services</loc>
+    <loc>https://www.contestor.ee/accounting-services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/ai-consulting</loc>
+    <loc>https://www.contestor.ee/ai-consulting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/remote-eu-company</loc>
+    <loc>https://www.contestor.ee/remote-eu-company</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/news</loc>
+    <loc>https://www.contestor.ee/news</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://contestor-clone-magic.lovable.app/contact</loc>
+    <loc>https://www.contestor.ee/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

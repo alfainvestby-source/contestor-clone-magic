@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://contestor-clone-magic.lovable.app/sitemap.xml
+# Block indexing of Lovable preview/staging hosts
+Host: www.contestor.ee
+
+Sitemap: https://www.contestor.ee/sitemap.xml
