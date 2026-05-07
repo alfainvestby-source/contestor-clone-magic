@@ -9,18 +9,28 @@ interface SEOHeadProps {
 }
 
 const SITE_NAME = "Contestor";
-const BASE_URL = "https://contestor-clone-magic.lovable.app";
+const BASE_URL = "https://www.contestor.ee";
 const OG_IMAGE = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0969a37e-60b4-48de-a704-dd37c50635a0/id-preview-a0dab5b1--2dbb6e9e-4716-4eb2-a3ac-e1412f3a6c52.lovable.app-1775847061803.png";
 
 const SEOHead = ({ title, description, canonical, type = "website", jsonLd }: SEOHeadProps) => {
   const fullUrl = `${BASE_URL}${canonical}`;
   const fullTitle = `${title} | ${SITE_NAME}`;
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    alternateName: "Contestor OÜ",
+    url: BASE_URL,
+  };
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullUrl} />
+      <meta name="application-name" content={SITE_NAME} />
+      <meta name="robots" content="index,follow,max-image-preview:large" />
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />
@@ -47,6 +57,7 @@ const SEOHead = ({ title, description, canonical, type = "website", jsonLd }: SE
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
+      <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
     </Helmet>
   );
 };
