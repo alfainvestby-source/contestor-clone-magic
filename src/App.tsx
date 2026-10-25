@@ -12,6 +12,7 @@ import TaxServices from "./pages/TaxServices.tsx";
 import Contact from "./pages/Contact.tsx";
 import News from "./pages/News.tsx";
 import RemoteEUCompany from "./pages/RemoteEUCompany.tsx";
+import Loopsun from "./pages/Loopsun.tsx";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/news" element={<News />} />
             <Route path="/remote-eu-company" element={<RemoteEUCompany />} />
+            <Route path="/loopsun" element={<Loopsun />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
