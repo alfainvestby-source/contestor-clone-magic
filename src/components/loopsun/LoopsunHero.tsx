@@ -3,6 +3,7 @@ import ThermostatDial from "@/components/loopsun/ThermostatDial";
 
 const navLinks = ["Home", "Solutions", "About", "Contact"];
 const tags = ["Solar", "Battery Storage", "EV Charging"];
+const WHATSAPP_URL = "https://wa.me/254700522058";
 
 const LoopsunHero = () => (
   <section className="min-h-screen w-full p-3 sm:p-6 lg:p-8" style={{ backgroundColor: "#E8E8E8" }}>
@@ -41,7 +42,9 @@ const LoopsunHero = () => (
 
         <div className="flex items-center gap-5">
           <a
-            href="#"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden items-center gap-1 text-xs text-[#1F1F1F] underline underline-offset-4 sm:inline-flex"
           >
             Let's talk <ArrowUpRight className="h-3 w-3 text-[#FF9F2E]" />
@@ -80,7 +83,9 @@ const LoopsunHero = () => (
             energy just works, rain or shine.
           </p>
           <a
-            href="#"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1F2226] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] text-white shadow-[0_8px_20px_rgba(0,0,0,0.15)] transition-transform hover:-translate-y-0.5"
           >
             Let's talk <ArrowUpRight className="h-3.5 w-3.5 text-[#FFB347]" />
