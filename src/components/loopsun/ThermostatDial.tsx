@@ -14,7 +14,7 @@ const fetchNairobiTemp = async (): Promise<number> => {
   return data.current.temperature_2m as number;
 };
 
-const ThermostatHero = () => {
+const ThermostatDial = () => {
   const [pressed, setPressed] = useState(false);
   const { data, isSuccess } = useQuery({
     queryKey: ["nairobi-temp"],
@@ -26,13 +26,10 @@ const ThermostatHero = () => {
   const temp = Math.round(isSuccess ? data : FALLBACK_TEMP);
 
   return (
-    <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4"
-      style={{ backgroundColor: "#E8E8E8" }}
-    >
+    <div className="flex flex-col items-center">
       {/* Faint outer disc */}
       <div
-        className="relative flex aspect-square w-[min(78vw,460px)] items-center justify-center rounded-full"
+        className="relative flex aspect-square w-[min(72vw,46vh,420px)] items-center justify-center rounded-full"
         style={{
           background: "radial-gradient(circle at 50% 45%, #E9E9E9 0%, #E4E4E4 70%, #E1E1E1 100%)",
           boxShadow:
@@ -84,7 +81,7 @@ const ThermostatHero = () => {
         >
           <span
             className="relative font-extralight leading-none tracking-tight text-[#2E2E2E]"
-            style={{ fontSize: "clamp(4rem, 15vw, 7.5rem)" }}
+            style={{ fontSize: "clamp(3.5rem, min(13vw, 9vh), 7rem)" }}
           >
             {temp}
             <span
@@ -97,11 +94,11 @@ const ThermostatHero = () => {
         </button>
       </div>
 
-      <p className="mt-10 text-xs font-medium uppercase tracking-[0.3em] text-[#8A8A8A]">
+      <p className="mt-6 text-[10px] font-medium uppercase tracking-[0.3em] text-[#8A8A8A]">
         {isSuccess ? "Nairobi · Now" : "Nairobi"}
       </p>
-    </section>
+    </div>
   );
 };
 
-export default ThermostatHero;
+export default ThermostatDial;

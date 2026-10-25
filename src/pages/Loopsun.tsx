@@ -1,8 +1,8 @@
-import ThermostatHero from "@/components/loopsun/ThermostatHero";
+import LoopsunHero from "@/components/loopsun/LoopsunHero";
 
 const Loopsun = () => (
   <main className="min-h-screen">
-    <ThermostatHero />
+    <LoopsunHero />
   </main>
 );
 
